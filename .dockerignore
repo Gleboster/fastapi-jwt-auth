@@ -1,0 +1,40 @@
+# Виртуальное окружение (самый главный враг кэша и веса)
+.venv/
+venv/
+ENV/
+
+# Локальные секреты и настройки окружения
+.env
+*.env
+.env.*
+
+# Кэш Python и байт-код
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Файлы настроек PyCharm / VS Code
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи и временные файлы
+*.log
+logs/
+tmp/
+
+# Документация и Git (по желанию, уменьшает размер контекста)
+.git
+.gitignore
+README.md
+Dockerfile
+
+# uv files
+.python-version
+uv.lock
+pyproject.toml
