@@ -1,0 +1,18 @@
+services:
+  jwt_auth:
+    build: .
+    container_name: jwt_auth
+
+    env_file:
+      - .env
+
+    environment:
+      DB_HOST: host.docker.internal
+
+    extra_hosts:
+      host.docker.internal: host-gateway
+
+    ports:
+      - "8010:8000"
+
+    restart: unless-stopped
