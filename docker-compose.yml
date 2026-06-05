@@ -1,18 +1,43 @@
+volumes:
+  auth_postgresql:
+
+networks:
+  auth_backend:
+    driver: "bridge"
+
 services:
   jwt_auth:
-    build: .
-    container_name: jwt_auth
+    build:
+      context: .
+
+    depends_on:
+      - db
 
     env_file:
       - .env
+    # сделать разынми
 
     environment:
-      DB_HOST: host.docker.internal
-
-    extra_hosts:
-      host.docker.internal: host-gateway
-
-    ports:
-      - "8010:8000"
+      DB_HOST: db
 
     restart: unless-stopped
+
+    networks:
+      - auth_backend
+
+  db:
+    image: postgres:18.4-alpine
+    container_name: db_jwt_auth
+
+    volumes:
+      - "auth_postgresql:/var/lib/postgresql"
+
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+
+    restart: unless-stopped
+
+    networks:
+      - auth_backend

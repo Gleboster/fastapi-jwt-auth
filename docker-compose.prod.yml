@@ -1,0 +1,18 @@
+volumes:
+  auth_postgresql:
+
+networks:
+  auth_backend:
+    driver: "bridge"
+
+services:
+  jwt_auth:
+    build:
+      dockerfile: docker/prod/app/Dockerfile
+    container_name: app_jwt_auth
+
+#    env_file:
+#      - .env
+
+    ports:
+      - "8000:8000"

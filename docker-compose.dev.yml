@@ -1,0 +1,20 @@
+volumes:
+  auth_postgresql:
+
+networks:
+  auth_backend:
+    driver: "bridge"
+
+services:
+  jwt_auth:
+    build:
+      dockerfile: docker/dev/app/Dockerfile
+#    env_file:
+#      - .env
+
+    ports:
+      - "8090:8000"
+
+  db:
+    ports:
+      - "5433:5432"
