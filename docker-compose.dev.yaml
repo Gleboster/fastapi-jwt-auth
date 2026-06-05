@@ -1,0 +1,53 @@
+volumes:
+  auth_postgresql:
+
+networks:
+  auth_backend:
+    driver: "bridge"
+
+services:
+  jwt_auth:
+    build:
+      context: .
+      dockerfile: docker/dev/app/Dockerfile
+    container_name: app_jwt_auth_dev
+
+    volumes:
+      - "D:/MyProjects/PycharmProjects/auth_2.0/src:/usr/app/src"
+
+    depends_on:
+      - db
+
+    env_file:
+      - .env
+
+    environment:
+      DB_HOST: db
+
+    ports:
+      - "8090:8000"
+
+    restart: unless-stopped
+
+    networks:
+      - auth_backend
+
+  db:
+    image: postgres:18.4-alpine
+    container_name: db_jwt_auth
+
+    volumes:
+      - "auth_postgresql:/var/lib/postgresql"
+
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+
+    ports:
+      - "5433:5432"
+
+    restart: unless-stopped
+
+    networks:
+      - auth_backend
