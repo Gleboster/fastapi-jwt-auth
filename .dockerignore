@@ -9,6 +9,7 @@ ENV/
 .env.*
 
 # Кэш Python и байт-код
+__pycache__
 **/__pycache__/
 *.pyc
 *.pyo
@@ -32,9 +33,5 @@ tmp/
 .git
 .gitignore
 README.md
-Dockerfile
-
-# uv files
-.python-version
-uv.lock
-pyproject.toml
+dokcer/
+docker-compose.yml
