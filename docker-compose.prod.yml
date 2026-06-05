@@ -11,8 +11,5 @@ services:
       dockerfile: docker/prod/app/Dockerfile
     container_name: app_jwt_auth
 
-#    env_file:
-#      - .env
-
     ports:
       - "8000:8000"

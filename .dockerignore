@@ -4,7 +4,7 @@ venv/
 ENV/
 
 # Локальные секреты и настройки окружения
-.env
+.env.base_host
 *.env
 .env.*
 

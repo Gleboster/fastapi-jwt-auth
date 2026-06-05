@@ -2,7 +2,7 @@
 venv/
 ENV/
 
-.env
+.env.base_host
 *.env
 .env.*
 

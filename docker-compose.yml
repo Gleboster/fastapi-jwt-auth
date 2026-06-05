@@ -14,11 +14,11 @@ services:
       - db
 
     env_file:
-      - .env
-    # сделать разынми
+      - .env.base_host
 
     environment:
       DB_HOST: db
+      DB_PORT: 5432
 
     restart: unless-stopped
 
