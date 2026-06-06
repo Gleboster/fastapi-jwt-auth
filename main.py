@@ -7,9 +7,8 @@ from fastapi import FastAPI
 from src.api.v1.handlers import auth_router
 
 app = FastAPI(
-    title="Template Project",
-    description="A universal template for backend projects built with FastAPI.",
-    version="0.1.0",
+    title="JWT Auth",
+    version="0.1.1",
 )
 
 app.include_router(auth_router)

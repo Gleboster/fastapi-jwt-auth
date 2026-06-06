@@ -14,7 +14,7 @@ services:
       - db
 
     env_file:
-      - .env.base_host
+      - .env
 
     environment:
       DB_HOST: db
